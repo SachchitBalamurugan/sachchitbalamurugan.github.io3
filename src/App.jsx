@@ -1,5 +1,7 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+// import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
 import Home from './Home';
 import About from './About';
 import Blog from "./Blog";
@@ -10,7 +12,7 @@ import Mentor from "./mentor";
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,7 +27,7 @@ const App = () => {
           {/* <Route path="*" element={<div>Page Not Found</div>} /> 404 route */}
         </Routes>
       </div>
-    </Router>
+    </HashRouter>
   );
 };
 

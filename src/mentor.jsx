@@ -10,6 +10,8 @@ import Bar from "./images/bar.png";
 import discord from "./images/discord.png";
 import css from "./images/css.png";
 import involveVideo from "./images/lesson.mp4";
+import { Link } from 'react-router-dom';
+
 import {
   motion,
   useScroll,
@@ -140,28 +142,13 @@ export default function Mentor() {
               onClick={toggleMenu}
               // Adjust positioning as needed
             />
-           <li>
-              <a href="/testvite/home">Home</a>
-            </li>
-            <li>
-              <a href="./about">About Us</a>
-            </li>
-              
-            <li>
-              <a href="/testvite/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/testvite/contact">Contact Us</a>
-            </li>
-            <li>
-              <a href="/testvite/clients">Past Clients</a>
-            </li>
-            <li>
-              <a href="/testvite/involve">Get Involved</a>
-            </li>
-            <li>
-              <a href="/testvite/mentor">Mentorship</a>
-            </li>
+           <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/blog">Blog</Link>
+      <Link to="/contact">Contact</Link>
+      <Link to="/clients">Clients</Link>
+      <Link to="/involve">Involve</Link>
+      <Link to="/mentor">Mentor</Link>
           </Menu>
 
           <h1
