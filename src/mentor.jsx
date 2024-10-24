@@ -142,13 +142,14 @@ export default function Mentor() {
               onClick={toggleMenu}
               // Adjust positioning as needed
             />
-           <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/contact">Contact</Link>
-      <Link to="/clients">Clients</Link>
-      <Link to="/involve">Involve</Link>
-      <Link to="/mentor">Mentor</Link>
+           <Link to="/" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Home</Link>
+    <Link to="/about" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>About</Link>
+    <Link to="/blog" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Blog</Link>
+    <Link to="/contact" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Contact</Link>
+    <Link to="/clients" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Clients</Link>
+    <Link to="/involve" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Involve</Link>
+    <Link to="/mentor" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>Mentor</Link>
+
           </Menu>
 
           <h1
