@@ -51,7 +51,7 @@ const images = [
   "https://via.placeholder.com/300x200?text=Image+4",
 ];
 
-export default function Home() {
+export default function Mentor() {
   const boxContainerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -140,27 +140,27 @@ export default function Home() {
               onClick={toggleMenu}
               // Adjust positioning as needed
             />
-            <li>
-              <a href="/home">Home</a>
+           <li>
+              <a href="/testvite/home">Home</a>
             </li>
             <li>
-              <a href="./AboutUs">About Us</a>
+              <a href="./about">About Us</a>
             </li>
-            
+              
             <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/contact">Contact Us</a>
+              <a href="/testvite/blog">Blog</a>
             </li>
             <li>
-              <a href="/clients">Past Clients</a>
+              <a href="/testvite/contact">Contact Us</a>
             </li>
             <li>
-              <a href="/involve">Get Involved</a>
+              <a href="/testvite/clients">Past Clients</a>
             </li>
             <li>
-              <a href="/mentor">Mentorship</a>
+              <a href="/testvite/involve">Get Involved</a>
+            </li>
+            <li>
+              <a href="/testvite/mentor">Mentorship</a>
             </li>
           </Menu>
 
