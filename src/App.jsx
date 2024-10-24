@@ -1,12 +1,22 @@
 import React from 'react';
-import Home from './Home'; // Ensure the path is correct
-import './styles.css'; // Import the CSS file
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
 
 const App = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <Router basename="/testvite"> {/* Set the base path to your app name */}
+      <div>
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          {/* Optionally add more routes here */}
+          <Route path="*" element={<div>Page Not Found</div>} /> {/* 404 route */}
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

@@ -97,10 +97,10 @@ export default function Home() {
               // Adjust positioning as needed
             />
             <li>
-              <a href="/home">Home</a>
+              <a href="/testvite/home">Home</a>
             </li>
             <li>
-              <a href="./AboutUs">About Us</a>
+              <a href="./about">About Us</a>
             </li>
               
             <li>
@@ -119,6 +119,7 @@ export default function Home() {
               <a href="/mentor">Mentorship</a>
             </li>
           </Menu>
+         
 
           <h1
             style={{
