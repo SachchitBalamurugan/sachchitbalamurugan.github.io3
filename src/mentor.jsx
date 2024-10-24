@@ -7,8 +7,9 @@ import TrashV from "./images/TrashV.png";
 import PartyV from "./images/PartyV.png";
 import FishV from "./images/FishV.png";
 import Bar from "./images/bar.png";
-import ReactGA from "react-ga";
-
+import discord from "./images/discord.png";
+import css from "./images/css.png";
+import involveVideo from "./images/lesson.mp4";
 import {
   motion,
   useScroll,
@@ -43,16 +44,48 @@ const letterVariants = {
   },
 };
 
+const images = [
+  "https://via.placeholder.com/300x200?text=Image+1",
+  "https://via.placeholder.com/300x200?text=Image+2",
+  "https://via.placeholder.com/300x200?text=Image+3",
+  "https://via.placeholder.com/300x200?text=Image+4",
+];
+
 export default function Home() {
   const boxContainerRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const text = " Empowering Youth Through Technology Education";
 
   const scrollLeft = () => {
     if (boxContainerRef.current) {
       boxContainerRef.current.scrollLeft -= 200; // Adjust the scroll distance as needed
     }
   };
+
+  const [inView, setInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        } else {
+          setInView(false);
+        }
+      },
+      { threshold: 0.1 }, // Adjust threshold as needed
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
 
   const scrollRight = () => {
     if (boxContainerRef.current) {
@@ -64,10 +97,21 @@ export default function Home() {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    ReactGA.initialize("G-1LTKL92188");
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+    );
+  };
+
+  const text = " GROW YOUR TECH KNOWLEDGE MORE WITH MENTORSHIP";
 
   return (
     <Axis>
@@ -97,47 +141,44 @@ export default function Home() {
               // Adjust positioning as needed
             />
             <li>
-              <a href="/testvite/home">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li>
-              <a href="./about">About Us</a>
+              <a href="./AboutUs">About Us</a>
             </li>
-              
+            
             <li>
-              <a href="/testvite/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/testvite/contact">Contact Us</a>
+              <a href="/blog">Blog</a>
             </li>
             <li>
-              <a href="/testvite/clients">Past Clients</a>
+              <a href="/contact">Contact Us</a>
             </li>
             <li>
-              <a href="/testvite/involve">Get Involved</a>
+              <a href="/clients">Past Clients</a>
             </li>
             <li>
-              <a href="/testvite/mentor">Mentorship</a>
+              <a href="/involve">Get Involved</a>
+            </li>
+            <li>
+              <a href="/mentor">Mentorship</a>
             </li>
           </Menu>
-         
 
           <h1
-            style={{
-              marginBottom: "-30px",
-              fontSize: "clamp(3rem, 5vw, 5rem)",
-            }}
+            style={{ marginBottom: "10px", fontSize: "clamp(3rem, 5vw, 5rem)" }}
           >
-            We Make Free Websites For You
+            Mentorship
           </h1>
           <p>
-            YOTI (Youth Opportunities in Tech Innovation) is a non-profit
-            organization focused on empowering youth through computer science
-            education. Our aim is to narrow the digital gap by offering
-            resources, training, and mentorship to young individuals, enabling
-            them to excel in the technology sector. Additionally, we provide
-            free website development services for other non-profit
-            organizations, helping them enhance their online presence and reach
-            a wider audience.
+            Our mentorship program at YOTI (Youth Opportunities in Tech
+            Innovation) is designed to empower young tech enthusiasts by pairing
+            them with experienced professionals who offer guidance, support, and
+            hands-on experience in various areas of technology. Through this
+            program, mentees gain valuable insights and practical skills,
+            enabling them to excel in the technology sector and drive positive
+            change in their communities. By fostering these mentor-mentee
+            relationships, we aim to nurture the next generation of innovators
+            and bridge the digital divide.
           </p>
           <button>
             <img
@@ -150,21 +191,23 @@ export default function Home() {
                 color: "white",
                 textDecoration: "none",
               }}
-              href="/AboutUs"
+              href="/involve"
             >
-              Learn More
+              Get Involved
             </a>
           </button>
-          <divNEW
+          <motion.divNEW
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             style={{
-              height: "600px",
+              height: "100%",
               background: "white",
               display: "flex",
-              alignItems: "center",
+              alignItems: "left",
               justifyContent: "center",
               flexDirection: "column",
               color: "#61999c",
-              textAlign: "center",
+              textAlign: "left",
               padding: "20px", // Add padding to the container
               boxSizing: "border-box",
             }}
@@ -177,8 +220,9 @@ export default function Home() {
               variants={headingVariants}
               style={{
                 fontFamily: "'Spline Sans', sans-serif",
-                fontSize: "5vw",
+                fontSize: "clamp(30px, 5vw, 36px)",
                 margin: "0", // Reset margin
+                marginRight: "300px",
                 // Add padding to create space below
                 zIndex: 101,
               }}
@@ -189,54 +233,140 @@ export default function Home() {
                 </motion.span>
               ))}
             </motion.h2>
-            <motion.h2
+
+            <motion.p1
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 3.5 }}
-              style={{
-                fontFamily: "'Catamaran', sans-serif",
-                fontSize: "155px",
-                margin: "-30px 0", // Adjust the margin
-                marginBottom: "-90px",
-              }}
-            >
-              "
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 3.5 }}
+              transition={{ duration: 3.5 }} // Adjust duration as needed, for example, 1.5 seconds
               style={{
                 fontFamily: "'Spline Sans', sans-serif",
                 fontSize: "20px",
                 color: "#555",
-                maxWidth: "70%",
+                maxWidth: "100%",
+
                 marginBottom: "0px",
-
-                margin: "-10px 0", // Add margin for spacing
+                marginRight: "300px",
+                margin: "20px 0", // Add margin for spacing
               }}
             >
-              "At YOTI, we believe in unlocking the potential of every young
-              individual, guiding them towards a brighter future in the
-              ever-evolving world of technology."
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 3.5 }}
+              At YOTI (Youth Opportunities in Tech Innovation), our mentorship
+              program is at the heart of our mission to empower the next
+              generation through computer science education. We understand that
+              mastering the fundamentals of technology can open doors to
+              countless opportunities, and we are committed to equipping young
+              individuals with the skills they need to thrive in the digital
+              age.
+            </motion.p1>
+
+            <figure
               style={{
-                fontFamily: "'Catamaran', sans-serif",
-                fontSize: "20px",
-                color: "#61999c",
-                maxWidth: "70%",
-                margin: "20px", // Add margin for spacing
+                display: "flex",
+                justifyContent: "space-around",
+                flexWrap: "wrap",
               }}
             >
-              - Sachchit Balamurugan (Founder and CEO of YOTI)
-            </motion.p>
-          </divNEW>
+              {/* Image 1 */}
+              <motion.figure
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                  visible: { opacity: 1, scale: 1 },
+                  hidden: { opacity: 0, scale: 0 },
+                }}
+                style={{
+                  textAlign: "center",
+                  position: "relative",
+                  backgroundColor: "white",
+                  width: "100%",
+                  maxWidth: "120px",
+                  height: "100px", // Set the height to 500px
+                  borderRadius: "20px", // Add border-radius for rounded corners
+                }}
+              >
+                <figcaption
+                  style={{
+                    color: "#61999c",
+                    fontFamily: "'Spline Sans', sans-serif",
+                    fontWeight: "bold",
+                    fontSize: "50px",
+                  }}
+                >
+                  <a href="http://www.w3.org/html/logo/">
+                    <img
+                      src="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png"
+                      width="63"
+                      height="64"
+                      alt="HTML5 Powered"
+                      title="HTML5 Powered"
+                    />
+                  </a>
+                </figcaption>
+              </motion.figure>
+              {/* Image 2 */}
+              <motion.figure
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                  visible: { opacity: 1, scale: 1 },
+                  hidden: { opacity: 0, scale: 0 },
+                }}
+                style={{
+                  textAlign: "center",
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "120px", // Set the width to 500px
+                  height: "100px", // Set the height to 500px
+                  borderRadius: "20px",
+                  backgroundColor: "white",
+                }}
+              >
+                <a href="http://www.w3.org/html/logo/">
+                  <img
+                    src="https://www.w3schools.com/whatis/img_js.png"
+                    width="63"
+                    height="64"
+                    alt="HTML5 Powered"
+                    title="HTML5 Powered"
+                  />
+                </a>
+              </motion.figure>
+              {/* Image 3 */}
+              <motion.figure
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                  visible: { opacity: 1, scale: 1 },
+                  hidden: { opacity: 0, scale: 0 },
+                }}
+                style={{
+                  textAlign: "center",
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "120px",
+                  height: "100px", // Set the height to 500px
+                  borderRadius: "20px",
+                  backgroundColor: "white",
+                }}
+              >
+                <a href="http://www.w3.org/html/logo/">
+                  <img
+                    src="https://cdn.iconscout.com/icon/free/png-256/free-css3-8-1175200.png?f=webp"
+                    width="73"
+                    height="74"
+                    alt="HTML5 Powered"
+                    title="HTML5 Powered"
+                  />
+                </a>
+              </motion.figure>
+            </figure>
+          </motion.divNEW>
         </Content>
-
         <div>
           {" "}
           <div
@@ -272,54 +402,132 @@ export default function Home() {
                   fontSize: "60px",
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 900,
+                  width: "100%",
+                  maxWidth: "100px",
                 }}
               >
-                Volunteer
+                24/7 Support
               </div>
-              <button
-  style={{
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "#000",
-    color: "white",
-    fontSize: "18px",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "10px",
-    cursor: "pointer",
-    marginTop: "20px",
-    zIndex: 5000,
-  }}
-  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#333")}
-  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#000")}
->
-  <img
-    src={involve}
-    alt="involve"
-    style={{ width: "30px", height: "30px", marginRight: "10px" }}
-  />
-  <a href="/involve" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Get Involved</a>
-</button>    
             </div>
             <motion.img
               initial={{ opacity: 0, transform: "translate(-20px, 20px)" }}
               animate={{}}
               transition={{ duration: 2 }}
               whileInView={{ opacity: 1, transform: "translate(0px, 0px)" }}
-              src={TrashV}
+              src={discord}
               alt="TrashV"
               style={{
                 width: "100%",
-                maxWidth: "500px",
+                maxWidth: "700px",
                 height: "100%",
-                maxHeight: "500px",
+                maxHeight: "700px",
                 transform: "translateY(20px)",
-                borderRadius: "50%",
               }}
             />
           </div>
         </div>
 
+        {/*Carousel for Reviews*/}
+        {/* <ReviewsContainer>
+          <h2>Reviews</h2>
+          <BoxContainer ref={boxContainerRef}>
+            <Box>
+              <BoxText>Text for Box 1</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 2</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+            <Box>
+              <BoxText>Text for Box 3</BoxText>
+            </Box>
+          </BoxContainer>
+          <ArrowButton onClick={scrollLeft} direction="left">
+            &lt;
+          </ArrowButton>
+          <ArrowButton onClick={scrollRight} direction="right">
+            &gt;
+          </ArrowButton>
+        </ReviewsContainer> */}
+
+        {/* <footer className="footer p-10 bg-neutral text-neutral-content">
+        <aside>
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            className="fill-current"
+          >
+            <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+          </svg>
+          <p>
+            ACME Industries Ltd.
+            <br />
+            Providing reliable tech since 1992
+          </p>
+        </aside>
+        <nav>
+          <header className="footer-title">Social</header>
+          <div className="grid grid-flow-col gap-4">
+            <a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                className="fill-current"
+              >
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+              </svg>
+            </a>
+            <a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                className="fill-current"
+              >
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+              </svg>
+            </a>
+            <a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                className="fill-current"
+              >
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </footer> */}
         <div
           style={{
             display: "flex",
@@ -334,16 +542,15 @@ export default function Home() {
             animate={{}}
             transition={{ duration: 2 }}
             whileInView={{ opacity: 1, transform: "translate(0px, 0px)" }}
-            src={TrashV}
+            src={css}
             alt="TrashV"
             style={{
               width: "100%",
-              maxWidth: "500px",
+              maxWidth: "700px",
               height: "100%",
-              maxHeight: "500px",
+              maxHeight: "700px",
               marginRight: "20px",
               transform: "translateY(20px)",
-              borderRadius: "50%",
             }}
           />
           <div
@@ -369,34 +576,12 @@ export default function Home() {
                 fontSize: "60px",
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 900,
+                width: "100%",
+                maxWidth: "400px",
               }}
             >
-              Mentorship Program
+              Customized Course Content and Resources
             </div>
-            <button
-  style={{
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "#000",
-    color: "white",
-    fontSize: "18px",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "10px",
-    cursor: "pointer",
-    marginTop: "20px",
-    zIndex: 5000,
-  }}
-  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#333")}
-  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#000")}
->
-  <img
-    src={involve}
-    alt="involve"
-    style={{ width: "30px", height: "30px", marginRight: "10px" }}
-  />
-  <a href="/mentor" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn More</a>
-</button>            
           </div>
         </div>
 
@@ -435,49 +620,33 @@ export default function Home() {
                 fontWeight: 900,
               }}
             >
-              What We Do
+              Live Sessions
             </div>
-            <button
-  style={{
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "#000",
-    color: "white",
-    fontSize: "18px",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "10px",
-    cursor: "pointer",
-    marginTop: "20px",
-    zIndex: 5000,
-  }}
-  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#333")}
-  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#000")}
->
-  <img
-    src={involve}
-    alt="involve"
-    style={{ width: "30px", height: "30px", marginRight: "10px" }}
-  />
-  <a href="/AboutUs" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn More</a>
-</button>    
           </div>
-          <motion.img
+          <motion.video
+            ref={ref}
             initial={{ opacity: 0, transform: "translate(-20px, 20px)" }}
-            animate={{}}
+            animate={{
+              opacity: inView ? 1 : 0,
+              transform: inView
+                ? "translate(0px, 0px)"
+                : "translate(-20px, 20px)",
+            }}
             transition={{ duration: 2 }}
-            whileInView={{ opacity: 1, transform: "translate(0px, 0px)" }}
-            src={TrashV}
-            alt="TrashV"
+            autoPlay
+            loop
+            muted
             style={{
               width: "100%",
-              maxWidth: "500px",
+              maxWidth: "700px",
               height: "100%",
-              maxHeight: "500px",
+              maxHeight: "700px",
               transform: "translateY(20px)",
-              borderRadius: "50%",
             }}
-          />
+          >
+            <source src={involveVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </motion.video>
         </div>
 
         <Footer>
@@ -491,7 +660,22 @@ export default function Home() {
           </LogoContainer>
 
           <SocialMediaContainer>
-               
+            <a
+              href="https://www.instagram.com/texasyoti/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                className="fill-current"
+              >
+                {/* Twitter icon */}
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+              </svg>
+            </a>
             <a
               href="https://www.instagram.com/texasyoti/"
               target="_blank"
@@ -873,63 +1057,39 @@ const Image2 = styled.img`
   /* Add additional styles for your image here */
 `;
 
-const ReviewsContainer = styled.div`
-  overflow-x: auto;
-  white-space: nowrap;
-  z-index: 3;
-  padding: 0 80px;
-
-  h2 {
-    font-family: "Poppins", sans-serif;
-    font-weight: bold;
-    font-size: 50px;
-    margin: 20px;
-    max-width: 600px;
-    z-index: 3;
-    transform: translateY(150%);
-  }
-`;
-const BoxContainer = styled.div`
-  overflow-x: auto;
-  white-space: nowrap;
+const CarouselContainer = styled.div`
   position: relative;
-  display: flex;
-  gap: 20px; /* Adjust the gap between boxes as needed */
-  margin: 100px auto; /* Center the container horizontally and adjust the top margin */
-  padding: 20px; /* Add padding to the container to make space for scrolling */
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  text-align: center; /* Center the content */
-  max-width: 1020px; /* Set a maximum width for the container */
-  border-radius: 50px;
-
-  @media (max-width: 768px) {
-    max-width: 100%; /* Adjust for smaller screens */
-  }
-`;
-
-const Box = styled.div`
-  z-index: 5;
-  width: 280px;
-  height: 280px;
-  background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  position: relative;
+  width: 100%;
   overflow: hidden;
-  border-radius: 20px;
-  z-index: 6;
-  flex-shrink: 0; /* Prevent boxes from shrinking in the container */
-
-  &:hover {
-    div {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
 
-const BoxText = styled.div``;
+const CarouselTrack = styled(motion.div)`
+  display: flex;
+  width: ${(props) => props.children.length * 300}px;
+`;
+
+const CarouselImage = styled.img`
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+`;
+
+const PrevButton = styled(Button)`
+  left: 10px;
+`;
+
+const NextButton = styled(Button)`
+  right: 10px;
+`;

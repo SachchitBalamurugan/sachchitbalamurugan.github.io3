@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
+import Blog from "./Blog";
+import Contact from './Contact';
+import Clients from "./Clients";
 
 const App = () => {
   return (
@@ -12,7 +15,12 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          {/* Optionally add more routes here */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/clients" element={<Clients />} />
+          {/* <Route path="/involve" element={<Home />} /> */}
+          {/* <Route path="/mentor" element={<About />} />  */}
+          {/* Optionally add more routes here
           <Route path="*" element={<div>Page Not Found</div>} /> {/* 404 route */}
         </Routes>
       </div>
