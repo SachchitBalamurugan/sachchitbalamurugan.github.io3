@@ -98,15 +98,8 @@ export default function Contact() {
               alt="involve"
               style={{ width: "30px", height: "30px" }}
             />
-            <a
-              style={{
-                color: "white",
-                textDecoration: "none",
-              }}
-              href="/AboutUs"
-            >
-              Learn More
-            </a>
+                <Link to="/about" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn more</Link>
+
           </button>
         </Content>
 

@@ -135,7 +135,7 @@ export default function Home() {
               alt="involve"
               style={{ width: "30px", height: "30px" }}
             />
-            <a
+            {/* <a
               style={{
                 color: "white",
                 textDecoration: "none",
@@ -143,7 +143,11 @@ export default function Home() {
               href="/AboutUs"
             >
               Learn More
-            </a>
+            </a> */}
+            <Link to="/about" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>
+  Learn More
+</Link>
+
           </button>
           <divNEW
             style={{
@@ -288,7 +292,11 @@ export default function Home() {
     alt="involve"
     style={{ width: "30px", height: "30px", marginRight: "10px" }}
   />
-  <a href="/involve" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Get Involved</a>
+  {/* <a href="/involve" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Get Involved</a> */}
+  <Link to="/involve" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>
+  Get Involved
+</Link>
+
 </button>    
             </div>
             <motion.img
@@ -385,7 +393,8 @@ export default function Home() {
     alt="involve"
     style={{ width: "30px", height: "30px", marginRight: "10px" }}
   />
-  <a href="/mentor" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn More</a>
+  <Link to="/mentor" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn more</Link>
+
 </button>            
           </div>
         </div>
@@ -449,7 +458,8 @@ export default function Home() {
     alt="involve"
     style={{ width: "30px", height: "30px", marginRight: "10px" }}
   />
-  <a href="/AboutUs" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn More</a>
+    <Link to="/about" style={{ color: "white", textDecoration: "none", marginRight: "20px", marginLeft: "20px" }}>Learn more</Link>
+
 </button>    
           </div>
           <motion.img

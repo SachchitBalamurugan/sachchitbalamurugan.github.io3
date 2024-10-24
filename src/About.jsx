@@ -127,15 +127,12 @@ export default function About() {
               alt="involve"
               style={{ width: "30px", height: "30px" }}
             />
-            <a
-              style={{
+            
+            <Link to="/involve" style={{
                 color: "white",
                 textDecoration: "none",
-              }}
-              href="/involve"
-            >
-              Get Involved Now
-            </a>
+              }}>Get Involved Now</Link>
+
           </button>
           <divNEW
             style={{
