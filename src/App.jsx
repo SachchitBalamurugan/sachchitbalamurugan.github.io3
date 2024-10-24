@@ -6,7 +6,7 @@ import Blog from "./Blog";
 import Contact from './Contact';
 import Clients from "./Clients";
 import Involve from "./involve";
-import Mentor from "./Mentor";
+import Mentor from "./mentor";
 
 const App = () => {
   return (
