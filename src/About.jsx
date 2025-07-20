@@ -592,64 +592,7 @@ export default function About() {
                 </figcaption>
               </motion.figure>
               {/* Image 2 */}
-              <motion.figure
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  textAlign: "center",
-                  position: "relative",
-                  boxShadow: "0px 5px 10px rgba(0, 135, 184, 0.5)",
-                  width: "260px",
-                  borderRadius: "20px",
-                  margin: "10px",
-                }}
-              >
-                <img
-                  src={Armaan}
-                  alt="Image 2"
-                  style={{
-                    width: "100%",
-                    margin: "25px 0",
-                    maxWidth: "200px",
-                    marginBottom: "10px",
-                    borderRadius: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  className={HoverStyles}
-                />
-                <figcaption
-                  style={{
-                    color: "white",
-                    fontFamily: "'Spline Sans', sans-serif",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Armaan Sharma <br /> (Co-Founder)
-                </figcaption>
-                <figcaption
-                  style={{
-                    color: "white",
-                    fontFamily: "'Spline Sans', sans-serif",
-                    textAlign: "left",
-                    marginLeft: "20px",
-                    marginRight: "20px",
-                  }}
-                >
-                  <br /> Hi! I am Armaan Sharma, an incoming senior in high
-                  school, and the co-founder of this organization. I am a
-                  motivated teenager interested in the fields of computer
-                  science and business, and I am currently learning machine
-                  learning and financial hypotheses, to figure out a bridge
-                  between my two passions. I have a heart for volunteering and
-                  teaching. <br /> <br /> I have experience doing research for
-                  competitions such as the Dallas Regional Science and
-                  Engineering Fair, where our work got third place recognition.{" "}
-                  <br /> <br /> I am on the software development team of various
-                  organizations, and I have experience working on both the
-                  frontend and backend of many platforms. I have also played
-                  piano for around 10 years now, and it is a huge passion of
-                  mine.{" "}
-                </figcaption>
-              </motion.figure>
+              
               {/* Image 3 */}
               <motion.figure
                 whileHover={{ scale: 1.05 }}
