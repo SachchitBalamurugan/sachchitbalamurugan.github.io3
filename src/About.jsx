@@ -8,7 +8,6 @@ import PartyV from "./images/PartyV.png";
 import FishV from "./images/FishV.png";
 import Underwater from "./images/logoYOTIf.png";
 import Rifah from "./images/Rifah.png";
-import Shritan from "./images/Shritan.png";
 import Armaan from "./images/Armaan.png";
 import Bar from "./images/bar.png";
 import Sachchit from "./images/Sachchit2.png";
@@ -524,8 +523,13 @@ export default function About() {
             <figure
               style={{
                 display: "flex",
-                justifyContent: "space-around",
-                flexWrap: "wrap", // Allow wrapping of elements
+                flexDirection: "row",
+                alignItems: "stretch",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "20px",
+                margin: 0,
+                padding: "0 20px 32px",
               }}
             >
               {/* Image 1 */}
@@ -535,20 +539,23 @@ export default function About() {
                   textAlign: "center",
                   position: "relative",
                   boxShadow: "0px 5px 10px rgba(0, 135, 184, 0.5)",
-                  width: "260px",
+                  width: "100%",
+                  flex: "1 1 420px",
                   borderRadius: "20px",
-                  margin: "10px", // Add margin for spacing when stacked
+                  margin: 0,
                 }}
               >
                 <img
                   src={Sachchit}
                   alt="Image 1"
                   style={{
-                    width: "100%",
+                    width: "200px",
+                    height: "200px",
                     margin: "25px 0",
                     maxWidth: "200px",
                     marginBottom: "10px",
                     borderRadius: "10px",
+                    objectFit: "cover",
                     transition: "transform 0.3s ease-in-out",
                   }}
                   className={HoverStyles}
@@ -566,29 +573,31 @@ export default function About() {
                   style={{
                     color: "white",
                     fontFamily: "'Spline Sans', sans-serif",
+                    fontSize: "0.85rem",
+                    fontWeight: "bold",
+                    marginTop: "6px",
+                  }}
+                >
+                  Freshman at UC Berkeley<br />
+                  Bioengineering | Regents and Chancellors Scholar
+                </figcaption>
+                <figcaption
+                  style={{
+                    color: "white",
+                    fontFamily: "'Spline Sans', sans-serif",
                     textAlign: "left",
                     marginLeft: "20px",
                     marginRight: "20px",
                   }}
                 >
-                  <br /> I'm Sachchit Balamurugan, the CEO of YOTI and a high
-                  school Junior with a diverse background in Research, Computer
-                  Science, Health care, and Machine Learning. <br /> <br /> I
-                  have done independent research that focused on predicting
-                  Adrenocortical Carcinoma using hyperparameter-optimized
-                  Conventional Neural Networks (CNNs). By employing Optuna for
-                  model optimization, I achieved higher accuracy with a
-                  pretrained MobileNetV2 compared to existing methods. My work
-                  won 3rd at the Forth Worth Regional Science Fair, and was a
-                  qualifier at the Texas State Science and Engineering Fair
-                  (TXSEF) and a RISE Global challenge finalist (Out of thousands
-                  of applications). <br /> <br /> I'm engaged in Quantum
-                  Chemistry research at Southern Methodist University,
-                  investigating Triaminopyrimidine (TAP) as a potential ancestor
-                  of RNA. Utilizing geometry optimization calculations and
-                  frequency analysis, we aim to validate TAP's significance in
-                  biochemical evolution. Our research continues to evolve as we
-                  gather and analyze additional data. <br />.
+                  <ul style={{ margin: "16px 0 12px", paddingLeft: "20px" }}>
+                    <li>3 Years AI Cancer Research on Adrenocortical Carcinoma and 6 Secondary Tumors</li>
+                    <li>Presented at International Youth Research Conference at Tokyo University and Published at IYRC Journal</li>
+                    <li>Published Tennis Socioeconomic Statistical Paper at JRHS</li>
+                    <li>Researched at SMU, Duke, UNT, UTD, UT Southwestern</li>
+                    <li>2025 and 2026 State Farm Software/Data Infrastructure Engineering Intern</li>
+                    <li>Featured on Forbes, D Magazine, Spectrum News 1, Dallas Innovates, and more</li>
+                  </ul>
                 </figcaption>
               </motion.figure>
               {/* Image 2 */}
@@ -600,20 +609,23 @@ export default function About() {
                   textAlign: "center",
                   position: "relative",
                   boxShadow: "0px 5px 10px rgba(0, 135, 184, 0.5)",
-                  width: "260px",
+                  width: "100%",
+                  flex: "1 1 420px",
                   borderRadius: "20px",
-                  margin: "10px",
+                  margin: 0,
                 }}
               >
                 <img
                   src={Rifah}
                   alt="Image 3"
                   style={{
-                    width: "100%",
+                    width: "200px",
+                    height: "200px",
                     margin: "25px 0",
                     maxWidth: "200px",
                     marginBottom: "10px",
                     borderRadius: "10px",
+                    objectFit: "cover",
                     transition: "transform 0.3s ease-in-out",
                   }}
                   className={HoverStyles}
@@ -625,66 +637,20 @@ export default function About() {
                     fontWeight: "bold",
                   }}
                 >
-                  Rifah Maulidya <br /> (Programing Lead and Mentor)
+                  Sajan Balamurugan <br /> (Co-Founder of YOTI)
                 </figcaption>
                 <figcaption
                   style={{
                     color: "white",
                     fontFamily: "'Spline Sans', sans-serif",
-                    textAlign: "left",
-                    marginLeft: "20px",
-                    marginRight: "20px",
-                  }}
-                >
-                  <br /> Hi everyone! My name is Rifah Maulidya and you can call
-                  me Rifah. I graduated from senior high school in Indonesia
-                  majoring in natural science. <br /> <br /> In my spare time, I
-                  enjoy reading psychology books and hopefully I can add more
-                  topics like CS and robotics to be added in my booklist!
-                  Currently reading Superintelligence book. <br /> <br />{" "}
-                  Another activity that I always do is coding, I make my own
-                  models using dataset from Kaggle or other online resources. I
-                  have made bunch of it specifically with Python that I have
-                  keep it on GitHub and Google Collab.
-                  <br /> <br /> For fun, I'm watching K-dramas or music videos
-                  of my favorite kpop group, I'm a big fan of them! Sometimes I
-                  go with friends and play games in our local mall.
-                </figcaption>
-              </motion.figure>
-              {/* Image 4 */}
-              <motion.figure
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  textAlign: "center",
-                  position: "relative",
-                  boxShadow: "0px 5px 10px rgba(0, 135, 184, 0.5)",
-                  width: "260px",
-                  borderRadius: "20px",
-                  margin: "10px",
-                }}
-              >
-                <img
-                  src={Shritan}
-                  alt="Image 4"
-                  style={{
-                    width: "100%",
-                    height: "260px",
-                    margin: "25px 0",
-                    maxWidth: "200px",
-                    marginBottom: "10px",
-                    borderRadius: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  className={HoverStyles}
-                />
-                <figcaption
-                  style={{
-                    color: "white",
-                    fontFamily: "'Spline Sans', sans-serif",
+                    textAlign: "center",
+                    fontSize: "0.85rem",
                     fontWeight: "bold",
+                    marginTop: "6px",
                   }}
                 >
-                  Shritan Khammamkar <br /> (Outreach Lead)
+                  Sophomore at Lone Star High School<br />
+                  Artificial Intelligence & Healthcare Research
                 </figcaption>
                 <figcaption
                   style={{
@@ -695,17 +661,16 @@ export default function About() {
                     marginRight: "20px",
                   }}
                 >
-                  <br /> Hello! My name is Shritan Khammamkar, and I'm an
-                  incoming senior at Independence High School. I'm interested in
-                  the fields of physics and engineering, particularly aerospace,
-                  and I'm enthusiastic about technology in this field as well.
-                  I'm interested in robotics and engineering mechanics too!
-                  <br /> <br /> I also play bass clarinet and am in my second
-                  year as a section leader for the Independence High School band
-                  program, and I have been learning carnatic vocals for almost
-                  13 years and counting. In my free time, I enjoy hanging out
-                  with my friends and family, playing video games, and going to
-                  the park. I'm very excited to work with this great team!
+                  <ul style={{ margin: "0 0 12px", paddingLeft: "20px" }}>
+                    <li>Conducted independent AI research on early diabetes detection using deep-learning models and pediatric medical imaging.</li>
+                    <li>Recipient of the IEEE Special Award at the Fort Worth Regional Science and Engineering Fair.</li>
+                    <li>USACO Gold competitor in competitive programming.</li>
+                    <li>Competed on FIRST Robotics Competition Team 6369, ranked #1 in Texas and among the top robotics teams in the world.</li>
+                    <li>Earned multiple state and international honors through Destination Imagination, including the Magellan Award and qualification to Global Finals.</li>
+                    <li>Life Scout in Boy Scouts with leadership experience as Assistant Senior Patrol Leader, Patrol Leader, and Troop Guide.</li>
+                    <li>Founder and President of First Pulse, a student-led initiative dedicated to teaching lifesaving first-aid skills and emergency preparedness.</li>
+                    <li>Passionate about the intersection of artificial intelligence, healthcare, and engineering.</li>
+                  </ul>
                 </figcaption>
               </motion.figure>
               {/* <motion.figure
